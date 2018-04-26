@@ -36,8 +36,7 @@ public class Alarm {
 		Machine.interrupt().disable();
 		KThread t = KThread.currentThread();
 		int inTheList = 0;
-		a = a + 10;
-		System.out.println("size: " + a + this.waitThread.isEmpty());
+		//System.out.println("size: " + a + this.waitThread.isEmpty());
 		for (HashMap.Entry<KThread,Long> entry : waitThread.entrySet()) {
 			System.out.println("long: " + entry.getValue());
 			if (Machine.timer().getTime() > waitThread.get(entry.getValue())){
@@ -72,9 +71,8 @@ public class Alarm {
 		KThread.yield();
 		long wakeTime = Machine.timer().getTime() + x;
 		this.waitThread.put(KThread.currentThread(), wakeTime);
-		a = a + 12;
-		System.out.println("value: " + a + " " + waitThread.get(KThread.currentThread()));
-		System.out.println("bool: " + waitThread.size());
+		//System.out.println("value: " + a + " " + waitThread.get(KThread.currentThread()));
+		//System.out.println("bool: " + waitThread.size());
 		//Machine.interrupt().enable();	
 		//while (wakeTime > Machine.timer().getTime())
 		//	KThread.yield();
@@ -83,7 +81,6 @@ public class Alarm {
 
 
 	
-	private int a;
 
 	public static void alarmTest1() {
 		int durations[] = {1000, 10*1000, 100*1000};
